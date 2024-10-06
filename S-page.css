@@ -3,7 +3,7 @@
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #929292bd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -11,8 +11,9 @@
 
 /* Style for the heading */
 h1 {
-    font-size: 2em;
-    color: #333;
+    font-size: 4em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffc340;
     margin-bottom: 20px;
 }
 
@@ -21,39 +22,39 @@ h1 {
     width: 80%;
     padding: 10px;
     margin: 10px 0;
-    font-size: 1.1em;
+    font-size: 1.5em;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 /* Style for the Get Weather button */
 #searchBtn {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: #007bff;
-    color: white;
+    padding: 8px 60px;
+    font-size: 1.3em;
+    background-color: #ffc340;
+    color: rgb(255, 255, 255);
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 #searchBtn:hover {
-    background-color: #0056b3;
+    background-color: #f8d589;
 }
 
 /* Style for the weather information block */
 #weatherInfo {
     margin-top: 30px;
-    padding: 20px;
+    padding: 60px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for the city name */
 #cityName {
-    font-size: 1.8em;
+    font-size: 2em;
     color: #333;
     margin-bottom: 10px;
 }
@@ -62,7 +63,7 @@ h1 {
 #temperature,
 #description,
 #humidity {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 5px 0;
     color: #555;
 }
