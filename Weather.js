@@ -36,12 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 (function () {
     // API Key and Base URL for OpenWeather API
-    var apiKey = '71fdeb39a90b8678bfac0862dcad07b8'; // Your actual API key
+    var apiKey = '71fdeb39a90b8678bfac0862dcad07b8'; // Replace this with your actual API key
     var baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
     // Get the city from the URL query parameters
     var urlParams = new URLSearchParams(window.location.search);
     var city = urlParams.get('city');
-    // Get DOM elements
+    // Get DOM elements for displaying weather data
     var cityName = document.getElementById('cityName');
     var description = document.getElementById('description');
     var temperature = document.getElementById('temperature');
@@ -88,11 +88,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
     // Function to display weather data in the DOM
     function displayWeather(data) {
-        cityName.innerText = "Weather in ".concat(data.name);
-        temperature.innerText = "Temperature: ".concat(data.main.temp, "\u00B0C");
-        description.innerText = "Description: ".concat(data.weather[0].description);
-        humidity.innerText = "Humidity: ".concat(data.main.humidity, "%");
-        // Show the weather information
-        weatherInfo.style.display = 'block';
+        if (cityName && description && temperature && humidity && weatherInfo) {
+            cityName.innerText = "Weather in ".concat(data.name);
+            temperature.innerText = "Temperature: ".concat(data.main.temp, "\u00B0C");
+            description.innerText = "Description: ".concat(data.weather[0].description);
+            humidity.innerText = "Humidity: ".concat(data.main.humidity, "%");
+            // Show the weather information
+            weatherInfo.style.display = 'block';
+        }
+        else {
+            console.error("One or more DOM elements are missing.");
+        }
     }
 })();

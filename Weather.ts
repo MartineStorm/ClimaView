@@ -1,15 +1,15 @@
 (() => {
     // API Key and Base URL for OpenWeather API
-    const apiKey: string = '71fdeb39a90b8678bfac0862dcad07b8';  // Your actual API key
+    const apiKey: string = '71fdeb39a90b8678bfac0862dcad07b8';  // Replace this with your actual API key
     const baseUrl: string = 'https://api.openweathermap.org/data/2.5/weather';
 
     // Get the city from the URL query parameters
     const urlParams = new URLSearchParams(window.location.search);
     const city = urlParams.get('city');
 
-    // Get DOM elements
+    // Get DOM elements for displaying weather data
     const cityName = document.getElementById('cityName') as HTMLHeadingElement | null;
-    const description = document.getElementById('description') as HTMLParagraphElement | null; // Ensure description is defined
+    const description = document.getElementById('description') as HTMLParagraphElement | null;
     const temperature = document.getElementById('temperature') as HTMLParagraphElement | null;
     const humidity = document.getElementById('humidity') as HTMLParagraphElement | null;
     const weatherInfo = document.getElementById('weatherInfo') as HTMLDivElement | null;
