@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src/**/*.ts"],  // Includes all .ts files in the src directory and subdirectories
+    "exclude": ["dist"]
+  }
+  
