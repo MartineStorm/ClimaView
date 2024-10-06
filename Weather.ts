@@ -8,11 +8,11 @@
     const city = urlParams.get('city');
 
     // Get DOM elements
-    const cityName = document.getElementById('cityName') as HTMLHeadingElement;
-    const description = document.getElementById('description') as HTMLParagraphElement;
-    const temperature = document.getElementById('temperature') as HTMLParagraphElement;
-    const humidity = document.getElementById('humidity') as HTMLParagraphElement;
-    const weatherInfo = document.getElementById('weatherInfo') as HTMLDivElement;
+    const cityName = document.getElementById('cityName') as HTMLHeadingElement | null;
+    const description = document.getElementById('description') as HTMLParagraphElement | null; // Ensure description is defined
+    const temperature = document.getElementById('temperature') as HTMLParagraphElement | null;
+    const humidity = document.getElementById('humidity') as HTMLParagraphElement | null;
+    const weatherInfo = document.getElementById('weatherInfo') as HTMLDivElement | null;
 
     // If a city is provided in the URL, fetch the weather data
     if (city) {
@@ -44,12 +44,16 @@
 
     // Function to display weather data in the DOM
     function displayWeather(data: any) {
-        cityName.innerText = `Weather in ${data.name}`;
-        temperature.innerText = `Temperature: ${data.main.temp}°C`;
-        description.innerText = `Description: ${data.weather[0].description}`;
-        humidity.innerText = `Humidity: ${data.main.humidity}%`;
+        if (cityName && description && temperature && humidity && weatherInfo) {
+            cityName.innerText = `Weather in ${data.name}`;
+            temperature.innerText = `Temperature: ${data.main.temp}°C`;
+            description.innerText = `Description: ${data.weather[0].description}`;
+            humidity.innerText = `Humidity: ${data.main.humidity}%`;
 
-        // Show the weather information
-        weatherInfo.style.display = 'block';
+            // Show the weather information
+            weatherInfo.style.display = 'block';
+        } else {
+            console.error("One or more DOM elements are missing.");
+        }
     }
 })();
