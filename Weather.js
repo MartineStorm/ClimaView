@@ -34,64 +34,65 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var apiKey = 'YOUR_API_KEY';
-var baseUrl = 'https://api.openweathermap.org/data/2.5/weather'; // Assuming OpenWeather API URL
-// Get DOM elements with appropriate types
-var searchBtn = document.getElementById('searchBtn');
-var cityInput = document.getElementById('cityInput'); // Corrected to HTMLInputElement
-var cityName = document.getElementById('cityName'); // Assuming it's an <h2> or <h3>
-var description = document.getElementById('description');
-var temperature = document.getElementById('temperature'); // Corrected to HTMLParagraphElement
-var humidity = document.getElementById('humidity'); // Corrected to HTMLParagraphElement
-var weatherInfo = document.getElementById('weatherInfo'); // Assuming this is a <div>
-// Event listener for search button
-searchBtn.addEventListener('click', function () {
-    var city = cityInput.value;
-    console.log("City:", city); // Check if the city value is correct
+(function () {
+    // API Key and Base URL for OpenWeather API
+    var apiKey = '71fdeb39a90b8678bfac0862dcad07b8'; // Your actual API key
+    var baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+    // Get the city from the URL query parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    var city = urlParams.get('city');
+    // Get DOM elements
+    var cityName = document.getElementById('cityName');
+    var description = document.getElementById('description');
+    var temperature = document.getElementById('temperature');
+    var humidity = document.getElementById('humidity');
+    var weatherInfo = document.getElementById('weatherInfo');
+    // If a city is provided in the URL, fetch the weather data
     if (city) {
-        console.log("Fetching data for:", city);
         getWeatherData(city);
     }
-});
-// Fetch weather data from OpenWeather API
-function getWeatherData(city) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, data, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("".concat(baseUrl, "?q=").concat(city, "&appid=").concat(apiKey, "&units=metric"))];
-                case 1:
-                    response = _a.sent();
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    data = _a.sent();
-                    if (data.cod === '404') {
-                        alert('City not found');
-                        return [2 /*return*/];
-                    }
-                    displayWeather(data);
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    console.error('Error fetching weather data:', error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
+    else {
+        alert('No city specified. Please enter a city in the URL.');
+    }
+    // Fetch weather data from OpenWeather API
+    function getWeatherData(city) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, data, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, fetch("".concat(baseUrl, "?q=").concat(city, "&appid=").concat(apiKey, "&units=metric"))];
+                    case 1:
+                        response = _a.sent();
+                        return [4 /*yield*/, response.json()];
+                    case 2:
+                        data = _a.sent();
+                        // Check if the city is valid or not found
+                        if (data.cod !== 200) {
+                            alert('City not found. Please try again.');
+                            return [2 /*return*/];
+                        }
+                        // Display the weather data in the DOM
+                        displayWeather(data);
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        console.error('Error fetching weather data:', error_1);
+                        alert('Error fetching weather data.');
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
         });
-    });
-}
-// Display weather data in HTML
-function displayWeather(data) {
-    if (cityName && temperature && description && humidity && weatherInfo) {
+    }
+    // Function to display weather data in the DOM
+    function displayWeather(data) {
         cityName.innerText = "Weather in ".concat(data.name);
         temperature.innerText = "Temperature: ".concat(data.main.temp, "\u00B0C");
         description.innerText = "Description: ".concat(data.weather[0].description);
         humidity.innerText = "Humidity: ".concat(data.main.humidity, "%");
+        // Show the weather information
         weatherInfo.style.display = 'block';
     }
-    else {
-        console.error("One or more elements are missing in the DOM.");
-    }
-}
+})();
