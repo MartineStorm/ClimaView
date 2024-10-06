@@ -29,4 +29,4 @@ This **README** gives a clear overview of the project and guides users on how to
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/weather-app.git
+   git clone https://github.com/MartineStorm/ClimaView/tree/main
