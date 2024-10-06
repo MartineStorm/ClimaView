@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Weather</title>
+    <title>Weather Information</title>
     <link rel="stylesheet" href="S-page.css">
 </head>
 <body>
     <div class="container">
         <h1>Search Weather</h1>
         <input type="text" id="cityInput" placeholder="Enter city name">
-        <button id="searchBtn">Get Weather</button>        
+        <button id="searchBtn">Get Weather</button>
+
+        <!-- Weather information will be displayed here after fetching -->
+        <div id="weatherInfo" style="display: none; margin-top: 20px;">
+            <h2 id="cityName"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+        </div>
     </div>
 
-    <!-- Link to the compiled S-page.js -->
+    <!-- Link to the compiled combined.js -->
     <script src="S-page.js"></script>
 </body>
 </html>
